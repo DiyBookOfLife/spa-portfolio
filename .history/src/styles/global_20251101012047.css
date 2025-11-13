@@ -1,0 +1,185 @@
+/* ───────────── GLOBAL RESET ───────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: "Inter", sans-serif;
+  background-color: #0f0f0f;
+  color: #eaeaea;
+  scroll-behavior: smooth;
+}
+
+/* ───────────── LAYOUT ───────────── */
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  background-color: #111;
+  color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+  border-right: 1px solid #222;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.content {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 3rem 4rem;
+}
+
+section {
+  padding-bottom: 6rem;
+  transition: background 0.4s ease;
+}
+
+.active-section {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+/* ───────────── TYPOGRAPHY ───────────── */
+h1,
+h2,
+h3 {
+  font-family: "Playfair Display", serif;
+}
+
+h2 {
+  color: #d17557;
+  margin-bottom: 1rem;
+}
+
+/* ───────────── SIDEBAR NAV ───────────── */
+.sidebar-header h1 {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.sidebar-header p {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.sidebar-nav button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav button:hover,
+.sidebar-nav .active {
+  color: #d17557;
+}
+
+.sidebar-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* ───────────── PROJECT CARDS ───────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.project-card {
+  background: #181818;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.project-card h3 {
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.project-card p {
+  color: #bbb;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+}
+
+.project-card a {
+  color: #d17557;
+  text-decoration: none;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.tech-list span {
+  background: #222;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+/* ───────────── MEDIA QUERIES ───────────── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+
+  .content {
+    padding: 2rem;
+  }
+
+  .active-section {
+    background: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar-header h1 {
+    font-size: 1.2rem;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+
+  section {
+    padding-bottom: 4rem;
+  }
+}

@@ -1,0 +1,434 @@
+/* ─────────── Global Reset ─────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─────────── Base Styles ─────────── */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  font-family: "Inter", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* ─────────── Page Container ─────────── */
+.page-container {
+  display: flex;
+  justify-content: center; /* centers everything horizontally */
+  width: 100%;
+  background-color: #0d1117;
+}
+
+/* ─────────── Layout ─────────── */
+.layout {
+  display: grid;
+  gap: 4rem;
+  grid-template-columns: 350px 1fr;
+  min-height: 100vh;
+  width: 100%;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─────────── Sidebar (left panel) ─────────── */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding: 2.5rem 2rem;
+  background: #0d1117;
+  border-right: 1px solid rgba(240, 246, 252, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Sidebar Headings */
+.sidebar h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f0f6fc;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar h3 {
+  font-size: 1rem;
+  color: #8b949e;
+  margin-bottom: 1rem;
+}
+
+.sidebar p {
+  color: #8b949e;
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Sidebar Nav */
+.sidebar nav ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.sidebar nav ul li {
+  margin-bottom: 1rem;
+}
+
+.sidebar nav ul li a {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.sidebar nav ul li a:hover {
+  color: #58a6ff;
+  text-shadow: 0 0 10px rgba(88, 166, 255, 0.4);
+}
+
+.sidebar nav ul li a.active {
+  color: #58a6ff;
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(88, 166, 255, 0.6);
+}
+
+/* Sidebar Social Icons */
+.sidebar a svg {
+  color: #8b949e;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar a svg:hover {
+  color: #58a6ff;
+  transform: scale(1.1);
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* smaller, consistent spacing */
+  width: 100%;
+}
+
+.sidebar-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f0f6fc;
+}
+.sidebar-header h3 {
+  font-size: 1rem;
+  color: #8b949e;
+  margin-top: 0.25rem;
+}
+.sidebar-header p {
+  color: #8b949e;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-top: 0.5rem;
+}
+
+/* Nav — no extra top margin; keep items tight */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+}
+.sidebar-nav li {
+  margin-bottom: 0.6rem;
+}
+.sidebar-nav li button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: #c9d1d9;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+.sidebar-nav li button:hover {
+  color: #58a6ff;
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+}
+.sidebar-nav li button.active {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.sidebar-nav a {
+  color: #c9d1d9;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+.sidebar-nav a:hover {
+  color: #58a6ff;
+  text-shadow: 0 0 8px rgba(88, 166, 255, 0.4);
+}
+.sidebar-nav a.active {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+/* Socials — keep near nav (not glued to the bottom) */
+.sidebar-socials {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+.sidebar-socials svg {
+  color: #8b949e;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.sidebar-socials a:hover svg {
+  color: #58a6ff;
+  transform: scale(1.06);
+}
+/* ─────────── Content (right scrollable panel) ─────────── */
+.content {
+  position: relative;
+  min-height: 100vh;
+  overflow-y: auto;
+  padding: 4rem 3rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 16px; /* where we scrollTo stops */
+  padding-bottom: 28vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─────────── Section Styling ─────────── */
+section {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto 3rem;
+  padding: 2rem;
+  border-radius: 10px;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+section.active-section {
+  background: rgba(88, 166, 255, 0.06);
+  box-shadow: 0 0 12px rgba(88, 166, 255, 0.12);
+  transform: translateY(-1px);
+}
+section h2 {
+  font-size: 1.6rem;
+  color: #f0f6fc;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #c9d1d9;
+  max-width: 650px;
+}
+
+/* ─────────── Scrollbar Style ─────────── */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: #30363d;
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background-color: #484f58;
+}
+
+/* ─────────── Projects Section ─────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  padding: 1.8rem;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: #58a6ff;
+  transform: translateY(-3px);
+}
+
+.project-inner h3 {
+  color: #f0f6fc;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-inner p {
+  color: #c9d1d9;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-list span {
+  background-color: #21262d;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: #8b949e;
+}
+
+.project-inner a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-inner a:hover {
+  text-decoration: underline;
+}
+
+/* ─────────── About Section ─────────── */
+#about {
+  max-width: 700px;
+}
+
+.about-paragraph {
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #c9d1d9;
+  letter-spacing: 0.3px;
+}
+
+.about-paragraph:first-of-type {
+  font-size: 1.05rem;
+  color: #e6edf3;
+}
+
+/* ─────────── Contact Section ─────────── */
+#contact {
+  max-width: 700px;
+}
+
+.contact-text {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #c9d1d9;
+}
+
+.contact-button {
+  display: inline-block;
+  background-color: #58a6ff;
+  color: #0d1117;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #1f6feb;
+}
+
+/* ─────────── Experience Section ─────────── */
+#experience {
+  max-width: 700px;
+}
+
+.experience-item {
+  margin-bottom: 3rem;
+}
+
+.experience-item h3 {
+  color: #f0f6fc;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.experience-dates {
+  color: #8b949e;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.experience-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #c9d1d9;
+}
+
+/* ─────────── Responsive Layout (Stacked Vertical) ─────────── */
+@media (max-width: 900px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers everything */
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    position: relative;
+    height: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(240, 246, 252, 0.08);
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+    gap: 1.2rem;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .sidebar-socials {
+    justify-content: center;
+  }
+
+  .content {
+    padding: 2.5rem 1rem;
+    height: auto;
+    overflow: visible;
+    align-items: center;
+    max-width: 800px;
+  }
+
+  section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
